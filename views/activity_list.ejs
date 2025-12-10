@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Activities - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>My Activities</h1>
+    <p><a href="/">Home</a> | <a href="/activities/add">Add new activity</a></p>
+
+    <% if (activities.length === 0) { %>
+      <p>You have not logged any activities yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Duration (min)</th>
+            <th>Intensity</th>
+            <th>Distance (km)</th>
+            <th>Calories</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% activities.forEach(function(a) { %>
+            <tr>
+              <td><%= a.activity_date.toISOString().slice(0,10) %></td>
+              <td><%= a.activity_type %></td>
+              <td><%= a.duration_minutes %></td>
+              <td><%= a.intensity || '' %></td>
+              <td><%= a.distance_km === null ? '' : a.distance_km.toFixed(2) %></td>
+              <td><%= a.calories === null ? '' : a.calories %></td>
+              <td><%= a.notes || '' %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </body>
+</html>

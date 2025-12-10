@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HealthTrack - Home</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>HealthTrack</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <% if (currentUserId) { %>
+          <a href="/activities/my">My Activities</a>
+          <a href="/activities/add">Add Activity</a>
+          <a href="/search">Search</a>
+          <a href="/stats">Stats</a>
+          <a href="/users/list">Users</a>
+          <a href="/users/logout">Logout (<%= currentUsername %>)</a>
+        <% } else { %>
+          <a href="/users/register">Register</a>
+          <a href="/users/login">Login</a>
+        <% } %>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Welcome to HealthTrack</h2>
+      <p>
+        HealthTrack is a simple health and fitness web app that lets you record your
+        activities and see summaries of your progress.
+      </p>
+
+      <% if (currentUserId) { %>
+        <p>You are logged in as <strong><%= currentUsername %></strong>.</p>
+        <ul>
+          <li><a href="/activities/add">Log a new activity</a></li>
+          <li><a href="/activities/my">View your activity history</a></li>
+          <li><a href="/search">Search your activities</a></li>
+          <li><a href="/stats">View your stats</a></li>
+        </ul>
+      <% } else { %>
+        <p>
+          <a href="/users/register">Create an account</a> or
+          <a href="/users/login">log in</a> to get started.
+        </p>
+        <p>You can log in as the default user: <strong>gold</strong> / <strong>smiths123ABC$</strong>.</p>
+      <% } %>
+    </main>
+  </body>
+</html>

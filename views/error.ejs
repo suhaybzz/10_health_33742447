@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Error - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Something went wrong</h1>
+    <p>An unexpected error occurred.</p>
+    <% if (error) { %>
+      <pre><%= error.message %></pre>
+    <% } %>
+    <p><a href="/">Return to home page</a></p>
+  </body>
+</html>

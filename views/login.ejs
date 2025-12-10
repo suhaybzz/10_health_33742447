@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Login</h1>
+    <p><a href="/">Home</a></p>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/users/loggedin">
+      <label>Username:
+        <input type="text" name="username" required />
+      </label>
+      <label>Password:
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Default test user: <strong>gold</strong> / <strong>smiths123ABC$</strong></p>
+  </body>
+</html>

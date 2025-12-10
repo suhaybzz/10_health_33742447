@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Search Activities - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Search Your Activities</h1>
+    <p><a href="/">Home</a> | <a href="/activities/my">My activities</a></p>
+
+    <form method="GET" action="/search_results" class="search-form">
+      <label>Activity type:
+        <input type="text" name="activity_type" />
+      </label>
+      <label>Minimum duration (minutes):
+        <input type="number" name="min_duration" min="1" />
+      </label>
+      <label>Maximum duration (minutes):
+        <input type="number" name="max_duration" min="1" />
+      </label>
+      <label>From date:
+        <input type="date" name="from_date" />
+      </label>
+      <label>To date:
+        <input type="date" name="to_date" />
+      </label>
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>

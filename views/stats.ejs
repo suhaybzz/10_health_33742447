@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Stats - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Your Activity Stats</h1>
+    <p><a href="/">Home</a> | <a href="/activities/my">My activities</a></p>
+
+    <% if (!stats || stats.length === 0) { %>
+      <p>No activities found to summarise.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Activity type</th>
+            <th>Sessions</th>
+            <th>Total minutes</th>
+            <th>Total calories</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% stats.forEach(function(s) { %>
+            <tr>
+              <td><%= s.activity_type %></td>
+              <td><%= s.session_count %></td>
+              <td><%= s.total_minutes %></td>
+              <td><%= s.total_calories %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register - HealthTrack</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Register</h1>
+    <p><a href="/">Home</a></p>
+
+    <% if (errors && errors.length > 0) { %>
+      <div class="error">
+        <ul>
+          <% errors.forEach(function(e) { %>
+            <li><%= e.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/users/registered">
+      <label>Username:
+        <input type="text" name="username" value="<%= formData.username || '' %>" required />
+      </label>
+      <label>First name:
+        <input type="text" name="first_name" value="<%= formData.first_name || '' %>" />
+      </label>
+      <label>Last name:
+        <input type="text" name="last_name" value="<%= formData.last_name || '' %>" />
+      </label>
+      <label>Email:
+        <input type="email" name="email" value="<%= formData.email || '' %>" required />
+      </label>
+      <label>Password:
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>

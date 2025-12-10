@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>HealthTrack - About</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>HealthTrack</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <% if (currentUserId) { %>
+          <a href="/activities/my">My Activities</a>
+          <a href="/activities/add">Add Activity</a>
+          <a href="/search">Search</a>
+          <a href="/stats">Stats</a>
+          <a href="/users/logout">Logout (<%= currentUsername %>)</a>
+        <% } else { %>
+          <a href="/users/register">Register</a>
+          <a href="/users/login">Login</a>
+        <% } %>
+      </nav>
+    </header>
+
+    <main>
+      <h2>About HealthTrack</h2>
+      <p>
+        HealthTrack is a health and fitness tracking application built as part of the
+        Dynamic Web Applications module. It demonstrates:
+      </p>
+      <ul>
+        <li>Node.js, Express, EJS templating</li>
+        <li>MySQL data storage</li>
+        <li>User registration, login and password hashing</li>
+        <li>Form handling, validation and sanitisation</li>
+        <li>Search and reporting features</li>
+        <li>A JSON API endpoint for activities</li>
+      </ul>
+      <p>
+        The focus of the project is on demonstrating backend and database skills
+        rather than visual design.
+      </p>
+    </main>
+  </body>
+</html>
