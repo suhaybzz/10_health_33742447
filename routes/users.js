@@ -74,8 +74,10 @@ router.post(
           return next(err2);
         }
 
+        // "login" here is relative: /users/registered -> /users/login (locally)
+        // and /usr/343/users/registered -> /usr/343/users/login (VM)
         res.send(
-          `Hello ${first_name || username}, you are now registered! <a href="/users/login">Go to login</a>`
+          `Hello ${first_name || username}, you are now registered! <a href="login">Go to login</a>`
         );
       });
     });
@@ -117,8 +119,11 @@ router.post('/loggedin', (req, res, next) => {
       req.session.userId = user.id;
       req.session.username = user.username;
 
-      // Show the home page directly (avoids redirecting to /home at site root)
-      res.render('index.ejs');
+      // IMPORTANT: do a redirect, not render, so the next request sees the session.
+      // Using "../home" keeps us under /usr/343 on the VM:
+      //   /users/loggedin        -> /home      (locally)
+      //   /usr/343/users/loggedin -> /usr/343/home (VM)
+      res.redirect('../home');
     });
   });
 });
