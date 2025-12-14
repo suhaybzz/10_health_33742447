@@ -10,8 +10,13 @@ const redirectLogin = (req, res, next) => {
   next();
 };
 
-// Home page
+// Redirect root to /home
 router.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
+// Home page (main landing page)
+router.get('/home', (req, res) => {
   res.render('index.ejs');
 });
 
