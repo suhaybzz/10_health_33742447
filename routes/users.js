@@ -113,14 +113,12 @@ router.post('/loggedin', (req, res, next) => {
         });
       }
 
-      // Successful login
+      // Successful login – store session
       req.session.userId = user.id;
       req.session.username = user.username;
 
-      // Use a relative redirect so it works both locally and on the VM:
-      // /users/loggedin           -> ../        -> /
-      // /usr/343/users/loggedin   -> ../        -> /usr/343/
-      res.redirect('..');
+      // Show the home page directly (avoids redirecting to /home at site root)
+      res.render('index.ejs');
     });
   });
 });
@@ -132,7 +130,7 @@ router.get('/logout', redirectLogin, (req, res) => {
       return res.send('Error logging out.');
     }
     res.send(
-      'You are now logged out. <a href="..">Return to home page</a>'
+      'You are now logged out. <a href="../home">Return to home page</a>'
     );
   });
 });
